@@ -1,0 +1,19 @@
+[
+  {
+    "min visits": 2,
+    "max visits":5,
+    "sale": 5.0
+  },
+
+  {
+    "min visits": 6,
+    "max visits": 15,
+    "sale": 10.0
+  },
+
+  {
+    "min visits": 16,
+    "max visits": 100,
+    "sale": 20.0
+  }
+]
