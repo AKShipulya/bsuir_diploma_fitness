@@ -41,9 +41,6 @@ import by.bsuir.fitness.command.impl.nutrition.AddNutritionCommand;
 import by.bsuir.fitness.command.impl.nutrition.RejectNutritionCommand;
 import by.bsuir.fitness.command.impl.nutrition.ShowClientNutritionCommand;
 import by.bsuir.fitness.command.impl.nutrition.UpdateNutritionCommand;
-import by.epam.fitness.command.impl.*;
-import by.epam.fitness.command.impl.admin.*;
-import by.epam.fitness.command.impl.client.*;
 
 /**
  * The enum Command enum.
