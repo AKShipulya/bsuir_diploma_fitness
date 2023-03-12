@@ -20,7 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * The type Connection pool.
  */
 public class ConnectionPool {
-    private final static Logger logger = LogManager.getLogger(ConnectionPool.class);
+    private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
 
     private static final int DEFAULT_NUMBER_OF_CONNECTION = 5;
     private static final String PROPERTY_PATH = "db/mysql.properties";
@@ -31,21 +31,20 @@ public class ConnectionPool {
 
     private static ConnectionPool instance;
 
-    private int numberOfConnections;
-
     private final BlockingQueue<ProxyConnection> awaitingConnections;
     private final List<ProxyConnection> occupiedConnections = new ArrayList<>();
     private final Driver driver;
 
+    private int numberOfConnections;
 
     private ConnectionPool() {
         try {
             var property = PropertyLoader.loadProperty(PROPERTY_PATH);
             try {
                 numberOfConnections = Integer.parseInt(property.getProperty(NUMBER_OF_CONNECTIONS_KEY));
-            } catch (NumberFormatException e) {
+            } catch (final NumberFormatException exception) {
                 numberOfConnections = DEFAULT_NUMBER_OF_CONNECTION;
-                logger.warn("Incorrect number of connections, set default = {}", numberOfConnections);
+                LOGGER.warn("Incorrect number of connections, set default = {}", numberOfConnections);
             }
 
             this.awaitingConnections = new ArrayBlockingQueue<>(numberOfConnections);
@@ -56,10 +55,9 @@ public class ConnectionPool {
                 var connection = new ProxyConnection(DriverManager.getConnection(property.getProperty(URL_PROPERTY_KEY), property));
                 awaitingConnections.offer(connection);
             }
-
-        } catch (SQLException e ) {
-            logger.fatal("Missing or incorrect db configuration file.", e);
-            throw new RuntimeException(e);
+        } catch (final SQLException exception) {
+            LOGGER.error("Missing or incorrect db configuration file.", exception);
+            throw new RuntimeException(exception);
         }
 
     }
@@ -73,7 +71,7 @@ public class ConnectionPool {
         if (!IS_CREATED.get()) {
             initPool();
             IS_CREATED.set(true);
-            logger.debug("Connection pool created, number of connections - {}", instance.numberOfConnections);
+            LOGGER.debug("Connection pool created, number of connections - {}", instance.numberOfConnections);
         }
         return instance;
     }
@@ -105,8 +103,8 @@ public class ConnectionPool {
         try {
             connection = awaitingConnections.take();
             occupiedConnections.add(connection);
-        } catch (InterruptedException e) {
-            logger.error("In ConnectionPoll takeConnection interrupted.");
+        } catch (final InterruptedException exception) {
+            LOGGER.error("In ConnectionPoll takeConnection interrupted.");
         }
         return connection;
     }
@@ -125,7 +123,7 @@ public class ConnectionPool {
      *
      * @param connection the connection
      */
-    public void releaseConnection(ProxyConnection connection) {
+    public void releaseConnection(final ProxyConnection connection) {
         awaitingConnections.offer(connection);
     }
 
@@ -135,19 +133,18 @@ public class ConnectionPool {
     public void closeAllConnections() {
         for (int i = 0; i < numberOfConnections; i++) {
             try {
-                ProxyConnection connection = awaitingConnections.take();
+                var connection = awaitingConnections.take();
                 connection.reallyClose();
-            } catch (InterruptedException e) {
-                logger.error(e);
+            } catch (final InterruptedException exception) {
+                LOGGER.error(exception.getMessage());
             }
         }
 
         try {
             DriverManager.deregisterDriver(driver);
-        } catch (SQLException e) {
-            logger.error(e);
+        } catch (final SQLException exception) {
+            LOGGER.error(exception.getMessage());
         }
     }
-
 }
 
