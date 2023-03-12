@@ -13,8 +13,8 @@ import java.util.concurrent.Executor;
  * The type Proxy connection.
  */
 public class ProxyConnection implements Connection, AutoCloseable {
-    private Logger log = LogManager.getLogger(ProxyConnection.class);
-    private Connection connection;
+    private final static Logger log = LogManager.getLogger(ProxyConnection.class);
+    private final Connection connection;
 
     /**
      * Instantiates a new Proxy connection.
@@ -27,8 +27,6 @@ public class ProxyConnection implements Connection, AutoCloseable {
 
     /**
      * Really close.
-     *
-     * @throws SQLException the sql exception
      */
     public void reallyClose() {
         try {

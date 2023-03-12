@@ -11,7 +11,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,27 +20,27 @@ import java.util.concurrent.locks.ReentrantLock;
  * The type Connection pool.
  */
 public class ConnectionPool {
-    private static Logger logger = LogManager.getLogger(ConnectionPool.class);
+    private final static Logger logger = LogManager.getLogger(ConnectionPool.class);
 
     private static final int DEFAULT_NUMBER_OF_CONNECTION = 5;
     private static final String PROPERTY_PATH = "db/mysql.properties";
     private static final String URL_PROPERTY_KEY = "url";
     private static final String NUMBER_OF_CONNECTIONS_KEY = "number.of.connections";
+    private static final AtomicBoolean IS_CREATED = new AtomicBoolean(false);
+    private static final ReentrantLock LOCK = new ReentrantLock();
 
-    private static AtomicBoolean isCreated = new AtomicBoolean(false);
-    private static ReentrantLock lock = new ReentrantLock();
     private static ConnectionPool instance;
 
     private int numberOfConnections;
 
-    private BlockingQueue<ProxyConnection> awaitingConnections;
-    private List<ProxyConnection> occupiedConnections = new ArrayList<>();
-    private Driver driver;
+    private final BlockingQueue<ProxyConnection> awaitingConnections;
+    private final List<ProxyConnection> occupiedConnections = new ArrayList<>();
+    private final Driver driver;
 
 
     private ConnectionPool() {
         try {
-            Properties property = PropertyLoader.loadProperty(PROPERTY_PATH);
+            var property = PropertyLoader.loadProperty(PROPERTY_PATH);
             try {
                 numberOfConnections = Integer.parseInt(property.getProperty(NUMBER_OF_CONNECTIONS_KEY));
             } catch (NumberFormatException e) {
@@ -54,7 +53,7 @@ public class ConnectionPool {
             driver = new com.mysql.jdbc.Driver();
             DriverManager.registerDriver(driver);
             for (int i = 0; i < numberOfConnections; i++) {
-                ProxyConnection connection = new ProxyConnection(DriverManager.getConnection(property.getProperty(URL_PROPERTY_KEY), property));
+                var connection = new ProxyConnection(DriverManager.getConnection(property.getProperty(URL_PROPERTY_KEY), property));
                 awaitingConnections.offer(connection);
             }
 
@@ -71,9 +70,9 @@ public class ConnectionPool {
      * @return the instance
      */
     public static ConnectionPool getInstance() {
-        if (!isCreated.get()) {
+        if (!IS_CREATED.get()) {
             initPool();
-            isCreated.set(true);
+            IS_CREATED.set(true);
             logger.debug("Connection pool created, number of connections - {}", instance.numberOfConnections);
         }
         return instance;
@@ -83,15 +82,15 @@ public class ConnectionPool {
      * Init pool.
      */
     public static void initPool() {
-        if (!isCreated.get()) {
-            lock.lock();
+        if (!IS_CREATED.get()) {
+            LOCK.lock();
             try {
                 if (instance == null) {
                     instance = new ConnectionPool();
-                    isCreated.set(true);
+                    IS_CREATED.set(true);
                 }
             } finally {
-                lock.unlock();
+                LOCK.unlock();
             }
         }
     }
