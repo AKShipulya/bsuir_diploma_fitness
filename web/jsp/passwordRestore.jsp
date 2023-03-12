@@ -1,4 +1,4 @@
-<%@ page import="by.epam.fitness.util.JspConst" %>
+<%@ page import="by.bsuir.fitness.util.JspConst" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +15,7 @@
 <fmt:message bundle="${locale}" key="label.password" var="password"/>
 <fmt:message bundle="${locale}" key="lang.text.english" var="en"/>
 <fmt:message bundle="${locale}" key="lang.text.russian" var="ru"/>
-<fmt:message bundle="${locale}" key="lang.text.belorussian" var="be"/>
+<fmt:message bundle="${locale}" key="lang.text.german" var="de"/>
 <fmt:message bundle="${locale}" key="return_to_profile" var="return_to_profile"/>
 <fmt:message bundle="${locale}" key="footer.copyright" var="footer"/>
 

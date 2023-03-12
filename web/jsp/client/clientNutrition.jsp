@@ -1,4 +1,4 @@
-<jsp:useBean id="nutrition" class="by.epam.fitness.entity.Nutrition" scope="request"/>
+<jsp:useBean id="nutrition" class="by.bsuir.fitness.entity.Nutrition" scope="request"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

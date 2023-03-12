@@ -10,7 +10,7 @@
 <fmt:message bundle="${locale}" key="about_us" var="about_us"/>
 <fmt:message bundle="${locale}" key="lang.text.english" var="en"/>
 <fmt:message bundle="${locale}" key="lang.text.russian" var="ru"/>
-<fmt:message bundle="${locale}" key="lang.text.belorussian" var="be"/>
+<fmt:message bundle="${locale}" key="lang.text.german" var="de"/>
 <fmt:message bundle="${locale}" key="profile_topic" var="profile_topic"/>
 <fmt:message bundle="${locale}" key="profile" var="profile"/>
 <fmt:message bundle="${locale}" key="gym_membership" var="gym_membership"/>
@@ -128,7 +128,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown09">
                     <a class="dropdown-item" href="${pageContext.servletContext.contextPath}/controller?command=locale&currentPage=${param.currentPage}&lang=en_US"><img src="img/flag/uk.png" width="40" height="20" alt="Eng"> Eng</a>
                     <a class="dropdown-item" href="${pageContext.servletContext.contextPath}/controller?command=locale&currentPage=${param.currentPage}&lang=ru_RU"><img src="img/flag/rus.png" width="40" height="20" alt="Rus"> Rus</a>
-                    <a class="dropdown-item" href="${pageContext.servletContext.contextPath}/controller?command=locale&currentPage=${param.currentPage}&lang=be_BY"><img src="img/flag/bel.png" width="40" height="20" alt="Bel"> Bel</a>
+                    <a class="dropdown-item" href="${pageContext.servletContext.contextPath}/controller?command=locale&currentPage=${param.currentPage}&lang=de_DE"><img src="img/flag/de.png" width="40" height="20" alt="Bel"> De</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

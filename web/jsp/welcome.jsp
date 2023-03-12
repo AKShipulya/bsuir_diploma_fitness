@@ -109,7 +109,9 @@
             <p class="lead">${slogan}${trainers_study}</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-            <a href="${pageContext.servletContext.contextPath}/controller?command=show_order_page"><button class="btn btn-success btn-lg" type="button">${view_offer}</button></a>
+            <a href="${pageContext.servletContext.contextPath}/controller?command=show_order_page">
+                <button class="btn btn-success btn-lg" type="button">${view_offer}</button>
+            </a>
         </div>
     </div>
 </div>
@@ -178,7 +180,8 @@
         </div>
         <hr>
         <div class="col-12">
-            <div style="overflow:hidden;width: 100%;"><iframe width="100%" height="300" src="https://maps.google.com/maps?width=1055&amp;height=440&amp;hl=en&amp;q=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%91%D0%B5%D0%B4%D1%8B%204+(%C2%AB%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D1%8F%C2%BB%20%D0%A4%D0%B8%D1%82%D0%BD%D0%B5%D1%81-%D1%86%D0%B5%D0%BD%D1%82%D1%80)&amp;ie=UTF8&amp;t=k&amp;z=12&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/en/">embedgooglemaps EN</a> & <a href="https://iamsterdamcard.it">www.iamsterdamcard.it</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
+            <div style="overflow:hidden;width: 100%;">
+                <iframe width="100%" height="300" src="https://maps.google.com/maps?width=1055&amp;height=440&amp;hl=en&amp;q=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%91%D0%B5%D0%B4%D1%8B%204+(%C2%AB%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D1%8F%C2%BB%20%D0%A4%D0%B8%D1%82%D0%BD%D0%B5%D1%81-%D1%86%D0%B5%D0%BD%D1%82%D1%80)&amp;ie=UTF8&amp;t=k&amp;z=12&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/en/">embedgooglemaps EN</a> & <a href="https://iamsterdamcard.it">www.iamsterdamcard.it</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
         </div>
     </div>
 </div>
@@ -187,8 +190,8 @@
     <div class="container-fluid">
         <div class="row text-center">
             <div class="col-12 social">
-                <a href="https://www.instagram.com/vanya_lukyanchik/"><i class="fab fa-instagram"></i></a>
-                <a href="https://vk.com/vanek17121999"><i class="fab fa-vk"></i></a>
+                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                <a href="https://vk.com/"><i class="fab fa-vk"></i></a>
             </div>
         </div>
         <div class="text-center">

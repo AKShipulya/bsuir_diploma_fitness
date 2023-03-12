@@ -62,7 +62,7 @@
     </c:when>
 
     <c:otherwise>
-        <jsp:useBean id="program" type="by.epam.fitness.entity.Program" scope="session"/>
+        <jsp:useBean id="program" type="by.bsuir.fitness.entity.Program" scope="session"/>
 
         <div class="text-center">
             <c:choose>

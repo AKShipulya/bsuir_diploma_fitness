@@ -1,4 +1,4 @@
-<jsp:useBean id="client" type="by.epam.fitness.entity.Client" scope="request"/>
+<jsp:useBean id="client" type="by.bsuir.fitness.entity.Client" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

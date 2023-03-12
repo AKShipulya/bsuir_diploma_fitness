@@ -40,7 +40,7 @@
     <input id="email" name="email" type="text" class="form-control mb-4" required placeholder="example@gmail.com" title="${email_pattern_error}"/>
 
     <label for="login">${login}</label>
-    <input id="login" name="login" type="text" class="form-control mb-4" required placeholder="VasyaPupkin" title="${username_pattern_error}"/>
+    <input id="login" name="login" type="text" class="form-control mb-4" required placeholder="JohnDoe" title="${username_pattern_error}"/>
     <c:choose>
         <c:when test="${not empty requestScope.wrongData}">
             <p class="text-danger">${restore_error_mail}</p>
