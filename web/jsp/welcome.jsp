@@ -69,7 +69,7 @@
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="transparent75" src="img/gym/4.jpg">
+            <img class="transparent75" src="img/gym/5.jpg">
             <div class="carousel-caption">
                 <h2 class="display-2">${your_fitness}</h2>
                 <h3>${characteristic}</h3>
